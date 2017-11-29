@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quguo</title>
+</head>
+<body>
+	<textarea rows="10" cols="30"></textarea>
+	<button>确定</button>
+</body>
+<script>
+	if(!localStorage.Qglunch){
+		console.log(1);
+		document.querySelector('textarea').innerHTML = '叉烧饭,猪脚饭,砂锅粉'
+	}else{
+		document.querySelector('textarea').value = localStorage.Qglunch;
+	}
+	document.querySelector('button').onclick = function(){
+	localStorage.Qglunch = document.querySelector('textarea').value;
+	alert(document.querySelector('textarea').value.split(',')[Math.floor(Math.random()*document.querySelector('textarea').value.split(',').length)])
+	}
+</script>
+</html>
