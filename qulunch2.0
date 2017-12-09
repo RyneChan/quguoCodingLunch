@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quguo</title>
+</head>
+<body>
+	<textarea rows="10" cols="30" id='all'></textarea>
+	<input type="text" value="3">
+	<button id="sure2" onclick="lunch(false)">连抽</button>
+</body>
+<script>
+	var all = document.querySelector("#all");
+
+	// 初始化
+	if(!localStorage.Qglunch){
+		all.innerHTML = '叉烧饭,猪脚饭,砂锅粉'
+	}else{
+		all.value = localStorage.Qglunch;
+	}
+	var AArr = all.value.split(',');
+	lunch(1);
+	function lunch(a){
+	var input = +document.querySelector("input").value;
+		if(input>=AArr.length){
+			alert('改少点啦，吃晒都唔够');
+			return;
+		}else if(input<1){
+			alert('加个数字啦扑街')
+			return;
+		}
+		var AArr1 = AArr.join().split(',');
+		var wtf = [];
+		for(var i=0;i<input;i++){
+			wtf.push(AArr1.splice(Math.floor(Math.random()*AArr1.length),1))
+		}
+		console.log(a);
+		if(a){
+			alert("系统默认给你三个饭，爱吃不吃！--------"+wtf);
+		}else{
+			alert("你自己抽的什么玩意？--------"+wtf);
+		}
+	}
+</script>
+</html>
